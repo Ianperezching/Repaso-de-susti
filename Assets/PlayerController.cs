@@ -8,25 +8,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Vector2 axisMovement;
+    [SerializeField] Vector2 Movimiento;
     Rigidbody rb;
     [SerializeField] float speed;
-    bool interaccion;
+   
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void OnDaño()
-    {
-    }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(axisMovement.x* speed, rb.velocity.y, axisMovement.y* speed);
+        rb.velocity = new Vector3(Movimiento.x* speed, rb.velocity.y, Movimiento.y* speed);
     }
     public void OnMovement(InputAction.CallbackContext value)
     {
-        axisMovement = value.ReadValue<Vector2>();
+        Movimiento = value.ReadValue<Vector2>();
     }
     private void OnTriggerEnter(Collider other)
     {
